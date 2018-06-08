@@ -14,6 +14,7 @@ namespace BankAccount
             string exitChecker = "no";
             Savings savings = new Savings();
             Checking checking = new Checking();
+            List<Checking> checkAcct = new List<Checking>();
             while (exitResponse == true)
             {
 

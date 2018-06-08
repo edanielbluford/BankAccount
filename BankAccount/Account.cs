@@ -45,11 +45,20 @@ namespace BankAccount
         public virtual void AddIntrest() //this is like the Tick() method in our last project
         {
             int intrestTick = 0;
-            double interestRate = this.AcctBal / 100;
+            double interestRate = this.AcctBal * 0.2;
             intrestTick = intrestTick + 1;
             if(intrestTick == 3 )
             {
+                if (this.AcctType.Equals("checking"))
+                {
+                    interestRate = this.AcctBal * 0.3;
+                }
+                else
+                {
+                    interestRate = this.AcctBal * 0.2;
+                }
                 this.AcctBal = this.AcctBal + interestRate;
+                Console.WriteLine("Intrest Paid");
                 intrestTick = 0;
             }
             else
