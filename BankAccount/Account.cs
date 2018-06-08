@@ -12,6 +12,7 @@ namespace BankAccount
         public string AcctType { get; set; }
         public double AcctBal { get; set; }
         public double MinBal { get; set; }
+        public string IntrestRate { get; set; }
 
 
         public Account()
@@ -19,26 +20,37 @@ namespace BankAccount
             //default constructor
         }
 
-        public Account(string name, string acctType, double acctBal)
+        public Account(string name, string acctType, double acctBal, string intrestRate)
         {
             this.Name = name;
             this.AcctType = acctType;
             this.AcctBal = acctBal;
+            this.IntrestRate = intrestRate;
         }
 
-        //double Withdraw()
-        //{
-        //    return;
-        //}
+        public double Withdraw()
+        {
+            double withdrawlAmt = 0;
+
+            withdrawlAmt =double.Parse(Console.ReadLine());
+            this.AcctBal = AcctBal - withdrawlAmt;
+
+            if((AcctBal == 0) || (withdrawlAmt > AcctBal))
+            {
+                Console.WriteLine("Insufficent Funds!!!!");
+            }
+            return AcctBal;
+        }
 
         public virtual void AddIntrest() //this is like the Tick() method in our last project
         {
             int intrestTick = 0;
             double interestRate = this.AcctBal / 100;
             intrestTick = intrestTick + 1;
-            if(intrestTick % 3 == 0)
+            if(intrestTick == 3 )
             {
                 this.AcctBal = this.AcctBal + interestRate;
+                intrestTick = 0;
             }
             else
             {
@@ -50,7 +62,13 @@ namespace BankAccount
         public double Deposit()
         {
 
-            return this.AcctBal;
+            double depositAmt = 0;
+
+            depositAmt = double.Parse(Console.ReadLine());
+            this.AcctBal = AcctBal + depositAmt;
+
+         
+            return AcctBal;
         }
 
         public double BalInq()

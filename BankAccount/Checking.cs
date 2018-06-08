@@ -16,7 +16,9 @@ namespace BankAccount
 
         public override void ViewAccount() // abstract method from abstract class
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Acccount Balance: {0}",this.AcctBal);
+            Console.WriteLine("Account Type: {0}",this.AcctType);
+            Console.WriteLine("Interest Rate:");
         }
 
     }
